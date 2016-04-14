@@ -3,6 +3,7 @@ import pickle
 import sys
 import dill
 from tabulate import tabulate
+from NBClassifier import build_classifier
 
 __author__ = 'Rustem'
 
@@ -57,12 +58,25 @@ def main(argv):
         # print("Dumping model")
         # dump_model(model, output)
         # print("DONE, now get your model at: " + output)
+    if naive:
+        naive_bayes(train_src, output)
+    elif maxent:
+        pass
+    elif estimate:
+        pass
 
 
-def dump_model(model, output):
+def naive_bayes(train, out):
+    print("Building new classifier based on Naive Bayes")
+    classifier = build_classifier(train)
+    dump_classifier(classifier, out)
+
+
+def dump_classifier(classifier, output):
     f = open(output, 'wb')
-    pickle.dump(model, f)
+    pickle.dump(classifier, f)
     f.close()
+    print("Dump success")
 
 
 if __name__ == "__main__":
