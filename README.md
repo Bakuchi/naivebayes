@@ -11,3 +11,17 @@
 - историческое событие, геолокация, периодические мероприятия
 - статьи про музыкантов (синглы, альбомы) - то по жанрам
 - статьи про книги
+
+## Loader.py
+  **USAGE:** python3 Loader.py [args]
+  **ARGS:**
+>
+    *  --naive  обучение НБ классификатора
+    *  --maxent обучение MaxEnt-классификатора
+    *  --train_src "/path/to/train/collection" путь к обучающему множеству
+    *  --output "/path/to/save" путь, куда сохранить классификатор
+    *  --estimate оценивание качества
+    *  --test_set "/path/to/test/collection" путь к тестовой части
+    *  --classifier "/path/to/classifier" путь к используемому классификатору
+    *  --collection "/path/to/collection" путь к произвольным входным текстам
+>
