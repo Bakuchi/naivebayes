@@ -27,22 +27,20 @@
   `python3 Loader.py [аргументы]`
 
 ##Доступные аргументы:
-> __Вывести всю справку `-h`__
+#### __Вывести всю справку `-h`__
 
+>   __--naive__ или __-nv__  обучение НБ классификатора
 >
-    --naive или -nv  обучение НБ классификатора
+>   __--maxent__ или __-me__  обучение MaxEnt-классификатора
 >
-    --maxent или -me  обучение MaxEnt-классификатора
+>    __--train_src__ или __-tr__ "/path/to/train/collection" путь к обучающему множеству
 >
-    --train_src или -tr "/path/to/train/collection" путь к обучающему множеству
+>    __--output__ или __-o__ "/path/to/save" путь, куда сохранить классификатор
 >
-    --output или -o "/path/to/save" путь, куда сохранить классификатор
+>    __--estimate__ или __-es__ оценивание качества
 >
-    --estimate или -es оценивание качества
+>    __--test_set__ или __-ts__ "/path/to/test/collection" путь к тестовой части
 >
-    --test_set или -ts "/path/to/test/collection" путь к тестовой части
+>    __--classifier__ или __-cl__ "/path/to/classifier" путь к используемому классификатору
 >
-    --classifier или -cl "/path/to/classifier" путь к используемому классификатору
->
-    --collection или -co "/path/to/collection" путь к произвольным входным текстам
->
+>    __--collection__ или __-co__ "/path/to/collection" путь к произвольным входным текстам
