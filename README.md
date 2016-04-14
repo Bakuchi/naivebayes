@@ -12,16 +12,29 @@
 - статьи про музыкантов (синглы, альбомы) - то по жанрам
 - статьи про книги
 
-## Loader.py
-  **USAGE:** python3 Loader.py [args]
-  **ARGS:**
+---
+# Зависимости
+
+* **NLTK 3**
+* **Tabulate**
+* **Pickle**
+* **Dill**
+
+
+# Загрузчик/Loader
+
+##Как использовать:
+  `python3 Loader.py [аргументы]`
+
+##Доступные аргументы:
+> __Вывести всю справку `-h`__
 >
-    *  --naive  обучение НБ классификатора
-    *  --maxent обучение MaxEnt-классификатора
-    *  --train_src "/path/to/train/collection" путь к обучающему множеству
-    *  --output "/path/to/save" путь, куда сохранить классификатор
-    *  --estimate оценивание качества
-    *  --test_set "/path/to/test/collection" путь к тестовой части
-    *  --classifier "/path/to/classifier" путь к используемому классификатору
-    *  --collection "/path/to/collection" путь к произвольным входным текстам
+    `**--naive** или **-nv**` обучение НБ классификатора
+    `**--maxent** или **-me**`  обучение MaxEnt-классификатора
+    `**--train_src или **-tr** "/path/to/train/collection"**` путь к обучающему множеству
+    `**--output или -o "/path/to/save"**` путь, куда сохранить классификатор
+    `**--estimate** или **-es**` оценивание качества
+    `**--test_set или -ts "/path/to/test/collection"**` путь к тестовой части
+    `**--classifier или -cl "/path/to/classifier"**` путь к используемому классификатору
+    `**--collection или -co "/path/to/collection"**` путь к произвольным входным текстам
 >
