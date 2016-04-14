@@ -28,13 +28,21 @@
 
 ##Доступные аргументы:
 > __Вывести всю справку `-h`__
+
 >
-    `**--naive** или **-nv**` обучение НБ классификатора
-    `**--maxent** или **-me**`  обучение MaxEnt-классификатора
-    `**--train_src или **-tr** "/path/to/train/collection"**` путь к обучающему множеству
-    `**--output или -o "/path/to/save"**` путь, куда сохранить классификатор
-    `**--estimate** или **-es**` оценивание качества
-    `**--test_set или -ts "/path/to/test/collection"**` путь к тестовой части
-    `**--classifier или -cl "/path/to/classifier"**` путь к используемому классификатору
-    `**--collection или -co "/path/to/collection"**` путь к произвольным входным текстам
+    --naive или -nv  обучение НБ классификатора
+>
+    --maxent или -me  обучение MaxEnt-классификатора
+>
+    --train_src или -tr "/path/to/train/collection" путь к обучающему множеству
+>
+    --output или -o "/path/to/save" путь, куда сохранить классификатор
+>
+    --estimate или -es оценивание качества
+>
+    --test_set или -ts "/path/to/test/collection" путь к тестовой части
+>
+    --classifier или -cl "/path/to/classifier" путь к используемому классификатору
+>
+    --collection или -co "/path/to/collection" путь к произвольным входным текстам
 >
