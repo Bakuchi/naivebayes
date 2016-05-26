@@ -17,32 +17,31 @@ def read_pageids(path):
     return ids
 
 
+# unsafe, fails when disambiguation occurs
 def download_and_save_from_wiki(name, ids):
     f = open(homePATH + name, 'w')
-    length = len(ids[273:])
-    for num, id in enumerate(ids[273:]):
+    length = len(ids)
+    for num, id in enumerate(ids):
         print("now downloading " + str(num) + " out of " + str(length))
         page = wikipedia.page(pageid=id)
         f.write(page.content)
     f.close()
 
 
-def continue_download(name, ids, startpoint):
-    f = open(homePATH + name, 'w')
-    dis = open(homePATH + "DIS" + name, 'w')
+# safe, writes disambiguated articles to a file
+def download_and_save_from_wiki(name, ids, startpoint):
+    file = open(homePATH + name, 'w')
+    disambiguation = open(homePATH + "DIS" + name, 'w')
     length = len(ids[startpoint:])
     for num, id in enumerate(ids[startpoint:]):
-        print("now downloading " + str(num) + " out of " + str(length))
+        print("Now downloading " + str(num) + " out of " + str(length))
         try:
             page = wikipedia.page(pageid=id)
-            f.write(page.content)
+            file.write(page.content)
         except wikipedia.DisambiguationError:
             DisambiguationErrorItems.append(id)
     for id in DisambiguationErrorItems:
-        dis.write(id)
-    f.close()
-    dis.close()
-# continue_download("relig", read_pageids(religionCSV),1621)
-# continue_download("astro", read_pageids(astronomicCSV),1591)
-# download_and_save_from_wiki("relig", read_pageids(religionCSV))
-# download_and_save_from_wiki("astro", read_pageids(astronomicCSV))
+        disambiguation.write(id)
+        disambiguation.write("\n")
+    file.close()
+    disambiguation.close()
