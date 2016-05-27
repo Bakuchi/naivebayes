@@ -69,6 +69,7 @@ def main(argv):
 def naive_bayes(train, out):
     print("Building new classifier based on Naive Bayes")
     classifier = build_classifier(train)
+    print("dumping")
     dump_classifier(classifier, out)
 
 
