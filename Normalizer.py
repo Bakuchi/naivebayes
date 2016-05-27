@@ -36,6 +36,7 @@ def normalize(root):
         while data:
             line += 1
             tokens.extend(process_tokenization(data.decode("utf-8")))
-            print("Reading  " + str(line) + " line of the corpus file")
+            print("Reading  " + str(line) + " line of the training file")
             data = m.readline()
+    print("tokens out")
     return tokens
