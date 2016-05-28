@@ -47,7 +47,7 @@ def normalize(root):
     print("tokens out")
     return tokens
 
-def normalize2(root):
+def normalize_sentence(root):
     tokens = []
     line = 0
     with open(root, 'r') as f:

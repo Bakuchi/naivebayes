@@ -11,6 +11,7 @@ __author__ = 'Rustem'
 def main(argv):
     naive = False
     maxent = False
+    logreg = False
     test_set = 'N\A'
     estimate = False
     train_src = 'N\A'
@@ -36,6 +37,8 @@ def main(argv):
             naive = True
         elif opt in ("--maxent", "-me"):
             maxent = True
+        elif opt in ("--logreg", "-lr"):
+            logreg = True
         elif opt in ("--train_src", "-tr"):
             train_src = arg
         elif opt in ("--test_set", "-ts"):
@@ -53,22 +56,19 @@ def main(argv):
                         ['Train set: ', train_src], ['Collection: ', collection],
                         ['Classifier: ', classifier], ['Output classifier file: ', output]],
                        headers=['Argument', 'User Input']))
-
-        # model = F1Helper.build_model(src_texts, text_encoding, word_type, int(n), laplace, good_turing, int(unk_word_freq))
-        # print("Dumping model")
-        # dump_model(model, output)
-        # print("DONE, now get your model at: " + output)
     if naive:
-        naive_bayes(train_src, output)
+        naive_bayes(output)
     elif maxent:
         pass
     elif estimate:
         pass
+    elif logreg:
+        pass
 
 
-def naive_bayes(train, out):
+def naive_bayes(out):
     print("Building new classifier based on Naive Bayes")
-    classifier = build_classifier(train)
+    classifier = build_classifier()
     print("dumping")
     dump_classifier(classifier, out)
 
