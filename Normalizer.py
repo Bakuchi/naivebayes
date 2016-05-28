@@ -21,10 +21,12 @@ def surface_no_pm(text):
     corpus = remove_punctuation(text)
     return clear(nltk.WordPunctTokenizer().tokenize(corpus))
 
+
 def stemmed(text):
     stemmer = SnowballStemmer("russian")
     nonstemmed = surface_no_pm(text)
     return clear([stemmer.stem(w) for w in nonstemmed])
+
 
 def process_tokenization(text):
     print("NOW TOKENIZING")
@@ -47,6 +49,7 @@ def normalize(root):
     print("tokens out")
     return tokens
 
+
 def normalize_sentence(root):
     tokens = []
     line = 0
@@ -61,4 +64,3 @@ def normalize_sentence(root):
             data = m.readline()
     print("tokens out")
     return tokens
-

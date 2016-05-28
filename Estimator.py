@@ -7,7 +7,8 @@ astronomic_test = '/home/admin-r/naive/csv/test_a'
 religion_test = '/home/admin-r/naive/csv/test_r'
 countries_test = '/home/admin-r/naive/csv/test_c'
 
-def test_cl(classifier):
+
+def accuracy(classifier):
     print("====== ESTIMATING CLASSIFIER ACCURACY ======")
     ast = Normalizer.normalize(astronomic_test)
     rel = Normalizer.normalize(religion_test)
