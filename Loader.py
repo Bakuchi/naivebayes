@@ -4,6 +4,7 @@ import sys
 import dill
 from tabulate import tabulate
 from NBClassifier import build_classifier
+from MaxEnt import build_max_ent
 from Estimator import accuracy
 from Classifier import classify
 
@@ -76,6 +77,13 @@ def naive_bayes(out):
     classifier = build_classifier()
     print("dumping")
     dump_classifier(classifier, out)
+
+def me(out):
+    print("Building new classifier based on Max Entropy")
+    classifier = build_max_ent()
+    print("dumping")
+    dump_classifier(classifier, out)
+
 
 
 def dump_classifier(classifier, output):
