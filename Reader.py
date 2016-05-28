@@ -1,1 +1,0 @@
-file = open("/home/admin-r/")

@@ -1,8 +1,10 @@
-import nltk, mmap, string
+import mmap, string
+from nltk import WordPunctTokenizer
+from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 
 translator = str.maketrans({key: None for key in string.punctuation})
-default_stopwords = set(nltk.corpus.stopwords.words('russian'))
+default_stopwords = set(stopwords.words('russian'))
 
 
 def clear(tokenlist):
@@ -19,7 +21,7 @@ def remove_punctuation(text):
 
 def surface_no_pm(text):
     corpus = remove_punctuation(text)
-    return clear(nltk.WordPunctTokenizer().tokenize(corpus))
+    return clear(WordPunctTokenizer().tokenize(corpus))
 
 
 def stemmed(text):
@@ -46,5 +48,4 @@ def normalize(root):
             tokens.append(process_tokenization(enc))
             print("Reading  " + str(line) + " line")
             data = m.readline()
-    print("tokens out")
     return tokens

@@ -1,9 +1,6 @@
-from itertools import chain
-
-import collections
-
-import Normalizer
+import collections, Normalizer
 from nltk import FreqDist, classify, metrics
+from itertools import chain
 
 astronomic_test = '/home/admin-r/naive/csv/test_a'
 religion_test = '/home/admin-r/naive/csv/test_r'

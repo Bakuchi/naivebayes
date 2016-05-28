@@ -1,92 +1,75 @@
-import getopt
-import pickle
-import sys
-import dill
+import getopt, pickle, sys
+from nltk import NaiveBayesClassifier, MaxentClassifier
 from tabulate import tabulate
-from NBClassifier import build_classifier
-from MaxEnt import build_max_ent
 from Estimator import accuracy
-from Classifier import classify
+from Classifier import classify, build_classifier
 
 __author__ = 'Rustem'
 
 
 def main(argv):
     naive = False
-    classificate = False
-    precision = False
-    estimate = False
     maxent = False
-    logreg = False
+    estimate = False
+    precision = False
+    classificate = False
     text = 'N\A'
     classifier = "/home/admin-r/naive/pickled/new.pickle"
     output = "/home/admin-r/naive/pickled/new.pickle"
     try:
-        opts, args = getopt.getopt(argv, "ho:mo:no:t:eo:l:ro:co:po:oo",
-                                   ["maxent", "naive", "text=", "estimate", "regression",
-                                    "classifier=", "classificate", "precision", "output="])
+        opts, args = getopt.getopt(argv, "ho:mo:no:t:eo:l:co:po:oo",
+                                   ["maxent", "naive", "text=", "estimate",
+                                    "classifier=", "classify", "precision", "output="])
     except getopt.GetoptError:
         print('Use python3 Loader.py -h for help')
         sys.exit(2)
     for opt, arg in opts:
         if opt in "-h":
-            print(tabulate([['Naive bayes classifier: ', naive], ['Maximum Entropy: ', maxent],
-                            ['Test set: ', text], ['Estimate: ', estimate],
-                            ['Classifier: ', classifier], ['Output classifier file: ', output]],
-                           headers=['Argument', 'User Input']))
+            print(tabulate([['To train naive bayes classifier type', "-n | --naive"],
+                            ['To train Maximum Entropy classifier type ', "-m | --maxent"],
+                            ['To estimate accuracy type ', "-e | --estimate"],
+                            ['If you additionally want to calculate precision type', "-p | --precision"],
+                            ['To classify type ', "-c | --classify"],
+                            ['Then load your classifier with ', "-l | --classifier"],
+                            ['And type text path with', "-t | --text /path/to/text/"],
+                            ['To change classifier output file type ', "-o | --output"]],
+                           headers=['Description', 'Args']))
             sys.exit()
         elif opt in ("--naive", "-n"):
             naive = True
         elif opt in ("--maxent", "-m"):
             maxent = True
-        elif opt in ("--regression", "-r"):
-            logreg = True
-        elif opt in ("--text", "-t"):
-            text = arg
         elif opt in ("--estimate", "-e"):
             estimate = True
+        elif opt in ("--precision", "-p"):
+            precision = True
+        elif opt in ("--classify", "-c"):
+            classificate = True
         elif opt in ("--classifier", "-l"):
             classifier = arg
-        elif opt in ("-o", "--output"):
+        elif opt in ("--text", "-t"):
+            text = arg
+        elif opt in ("--output", "-o"):
             output = arg
-        elif opt in ("-c", "--classificate"):
-            classificate = True
-        elif opt in ("-p", "--precision"):
-            precision = True
-        print(tabulate([['Naive bayes classifier: ', naive], ['Maximum Entropy: ', maxent],
-                        ['Test text: ', text], ['Estimate: ', estimate],
-                        ['Calculate: ', precision],
-                        ['Classifier: ', classifier], ['Output classifier file: ', output]],
-                       headers=['Argument', 'User Input']))
+
     if naive:
-        naive_bayes(output)
+        print("Building new classifier based on Naive Bayes")
+        classifier = build_classifier(NaiveBayesClassifier)
+        dump_classifier(classifier, output)
     elif maxent:
-        pass
+        print("Building new classifier based on Max Entropy")
+        classifier = build_classifier(MaxentClassifier)
+        dump_classifier(classifier, output)
     elif estimate:
         cl = load_classifier(classifier)
         accuracy(cl, precision)
-    elif logreg:
-        pass
     elif classificate:
         cl = load_classifier(classifier)
         classify(cl, text)
 
 
-def naive_bayes(out):
-    print("Building new classifier based on Naive Bayes")
-    classifier = build_classifier()
-    print("dumping")
-    dump_classifier(classifier, out)
-
-def me(out):
-    print("Building new classifier based on Max Entropy")
-    classifier = build_max_ent()
-    print("dumping")
-    dump_classifier(classifier, out)
-
-
-
 def dump_classifier(classifier, output):
+    print("Dumping classifier to file", output)
     f = open(output, 'wb')
     pickle.dump(classifier, f)
     f.close()

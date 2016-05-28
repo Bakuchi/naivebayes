@@ -18,7 +18,6 @@
 * **NLTK 3**
 * **Tabulate**
 * **Pickle**
-* **Dill**
 
 
 # Загрузчик/Loader
