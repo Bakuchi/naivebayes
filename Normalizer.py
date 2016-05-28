@@ -44,23 +44,7 @@ def normalize(root):
             line += 1
             enc = data.decode("utf-8")
             tokens.append(process_tokenization(enc))
-            print("Reading  " + str(line) + " line of the training file")
-            data = m.readline()
-    print("tokens out")
-    return tokens
-
-
-def normalize_sentence(root):
-    tokens = []
-    line = 0
-    with open(root, 'r') as f:
-        m = mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ)
-        data = m.readline()
-        while data:
-            line += 1
-            enc = data.decode("utf-8")
-            tokens.extend(process_tokenization(enc))
-            print("Reading  " + str(line) + " line of the training file")
+            print("Reading  " + str(line) + " line")
             data = m.readline()
     print("tokens out")
     return tokens

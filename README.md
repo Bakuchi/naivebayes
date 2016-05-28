@@ -26,21 +26,30 @@
 ##Как использовать:
   `python3 Loader.py [аргументы]`
 
+  `sudo python3 Loader.py -n  -o "/path/to/save"` - обучение NB классификатора
+
+  `sudo python3 Loader.py -c -l "/path/to/classifier" -t "/path/to/test_text" ` - использование классификатора
+
+  `sudo python3 Loader.py -e -l "/path/to/classifier"` - точность(accuracy) классификатора
+
+  `sudo python3 Loader.py -e -p -l "/path/to/classifier"` - accuracy, recall, precision классификатора
+
+
 ##Доступные аргументы:
 #### __Вывести всю справку `-h`__
 
->   __--naive__ или __-nv__  обучение НБ классификатора
+>   __--naive__ или __-n__  обучение НБ классификатора
 >
->   __--maxent__ или __-me__  обучение MaxEnt-классификатора
+>   __--maxent__ или __-m__  обучение MaxEnt-классификатора
 >
->    __--train_src__ или __-tr__ "/path/to/train/collection" путь к обучающему множеству
+>   __--classificate__ или __-c__  классификация вводимых текстов
+>
+>    __--text__ или __-t__ "/path/to/input/text" путь к классифицируемому тексту
 >
 >    __--output__ или __-o__ "/path/to/save" путь, куда сохранить классификатор
 >
->    __--estimate__ или __-es__ оценивание качества
+>    __--estimate__ или __-e__ оценивание качества(accuracy)
 >
->    __--test_set__ или __-ts__ "/path/to/test/collection" путь к тестовой части
+>    __--precision__ или __-p__ recall, precision, используется только в связке с `-e`
 >
->    __--classifier__ или __-cl__ "/path/to/classifier" путь к используемому классификатору
->
->    __--collection__ или __-co__ "/path/to/collection" путь к произвольным входным текстам
+>    __--classifier__ или __-l__ "/path/to/classifier" путь к используемому классификатору
